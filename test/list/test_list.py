@@ -49,11 +49,7 @@ import pytest
 
 def test_process_list_commands(monkeypatch, capsys, inputs, expected_output):
     input_iter = iter(inputs)
-    monkeypatch.setattr(
-        "builtins.input",
-        lambda: next(input_iter)
-    )
-
+    monkeypatch.setattr("builtins.input", lambda: next(input_iter))
     process_list_commands()
     captured = capsys.readouterr()
     assert captured.out == expected_output
